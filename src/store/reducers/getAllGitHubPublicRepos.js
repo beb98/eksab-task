@@ -21,7 +21,10 @@ export const getAllGitHubPublicRepos = (state = initState, action) => {
         ...state,
         isLoading: false,
         error: null,
-        response: { ...state.response, ...action.payload },
+        response: { ...state.response, items : [
+  ...state.response.items,
+  ...action.payload.items
+]},
       };
     case actionTypes.FETCHING_REPOS_FAIL:
       return {
