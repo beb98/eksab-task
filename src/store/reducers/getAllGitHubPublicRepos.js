@@ -7,6 +7,7 @@ const initState = {
 };
 
 export const getAllGitHubPublicRepos = (state = initState, action) => {
+  console.log(state);
   switch (action.type) {
     case actionTypes.START_FETCHING_REPOS:
       return {
@@ -20,7 +21,7 @@ export const getAllGitHubPublicRepos = (state = initState, action) => {
         ...state,
         isLoading: false,
         error: null,
-        response: action.payload,
+        response: { ...state.response, ...action.payload },
       };
     case actionTypes.FETCHING_REPOS_FAIL:
       return {
